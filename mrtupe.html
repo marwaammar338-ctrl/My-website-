@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta  charset="utf-8" />
+        <meta name="viewport" content="width=device-width , initial-scale=1.0" />
+        <meta name="description" content="mrtupe" />
+        <meta name="author" content="marwa" />
+        <meta name="keywords" content="mrtupe, social, vedio" />
+        <title>mrtupe</title>
+        <style>
+           body{
+               background: #191818;
+               font-family: Arial,Sans-Serif;
+               margin: 0;
+               padding: 0;
+               color: #421370;
+               text-transform: capitalize;
+               
+           }
+          .navbar  ul{
+               list-style: none;
+               margin: 20px 20px;
+               padding: 10px 10px;
+           }
+           .navbar a{
+               text-decoration: none;
+               margin: 10px 5px;
+               padding: 10px 5px;
+               display: inline-block;
+               color: #421370;
+               font-size: 20px;
+           }
+           .navbar a:hover {
+               background: #9d4eeb;
+               border-radius: 5px;
+               letter-spacing: 2px;
+               transition: all 0.3s ease;
+           }
+           .container{
+               width: 80%;
+               height: auto;
+               background: #000000;
+               margin: 20px auto;
+               padding: 20px;
+               border-radius: 10px;
+               overflow: auto;
+               
+           }
+           .content{
+               display: flex;
+               flex-direction: row;
+               gap: 10px;
+               align-items: flex-start;
+           }
+            h1 strong{
+               margin: 20px 30px;
+               display: inline-block;
+           }
+           h1 strong:hover{
+               letter-spacing: 2px;
+               background: #9d4eeb;
+               transition: all 0.3s ease;
+           }
+           .main-video{
+               display: flex;
+               flex-direction: column;
+               gap: 10px;
+           }
+           .main-video .video-info{
+               display: flex;
+               flex-direction: column;
+               gap: 10px;
+               
+           }
+           .main-video .video-actions {
+               display: flex;
+               flex-direction: row;
+               gap: 10px;
+               
+           }
+           .main-video .video-actions .action-btn{
+               border: none;
+               border-radius: 10px;
+           } 
+           .main-video .video-actions .action-btn:hover{
+               letter-spacing: 2px;
+               background: #9d4eeb;
+               transition: all 0.3s ease;
+           }
+           .main-video .mainvideo{
+               width: 500px;
+               height: 300px;
+               margin: 10px 5px;
+               display: inline-block;
+           }
+           .related-video{
+               display: flex;
+               flex-direction: column;
+               gap: 10px;
+               max-height: 300px;
+               padding-right: 5px;
+               
+           }
+           .related-video video{
+               width: 200px;
+               height: 110px;
+               border-radius: 5px;
+           }
+           .related-video .revideo-title{
+               display: flex;
+               flex-direction: row;
+               gap: 10px;
+           }
+           .video-info .video-states{
+               display: flex;
+               flex-direction: row;
+               gap: 20px;
+           }
+           .comment-section{
+               margin: 15px 10px;
+               display: flex;
+               flex-direction: column;
+               gap: 5px;
+               background: #111;
+               padding: 10px;
+               border-radius: 8px;
+               color: #fff;
+           }
+           .comment-section #commentInput{
+               width: auto;
+               padding: 8px;
+               margin: 5px;
+               border-radius: 5px;
+               border: 1px solid #444;
+               background: #222;
+               color: #fff;
+               font-size: 14px;
+           }
+           .comment-section #buttons{
+               display: flex;
+               flex-direction: row;
+               gap: 10px;
+               border: none;
+               padding: 6px 12px;
+               margin: auto;
+               border-radius: 5px;
+               
+           }
+           
+           .comment-section #buttons .commentbuttons{
+               border: none;
+               padding: 5px 10px;
+               margin: auto;
+               border-radius: 5px;
+               background: #222;
+               color: #fff;
+               cursor: pointer;
+               font-size: 14px;
+           }
+           .comment-section #buttons .commentbuttons:hover{
+               background: #421370;
+           }
+           #commentList {
+               margin-top: 10px;
+           }    
+           .hide {
+               display: none;
+           }
+
+        </style>
+        
+    </head>
+<body>
+<div class="container">
+    
+       <h1><strong>mrtupe</strong></h1> 
+   <div class="content">
+       
+    <div class="navbar">
+        <ul>
+            <li><a href="#">home</a></li>
+            <li><a href="#">explore</a></li>
+            <li><a href="#">subscribe</a></li>
+            <li><a href="#">library</a></li>
+        </ul>
+    </div>
+    <div class="main-video">
+        <video controls loop muted class="mainvideo" poster="poster.jpg">
+            <source src="video.mp4" type="video/mp4" />
+             your browser doesn't support this video
+        </video>
+        <div class="video-info">
+            <h2 class="video-title">my first</h2>
+            <p class="video-states"><span id="viewscount">120k views</span>
+            <span id="timecount">.2 days ago</span> </p>
+        </div>
+        <div class="video-actions">
+        <button id="sharebtn" class="action-btn">🔗share</button>
+        <button id="likebtn" class="action-btn">👍 like <span id="likecount">0</span></button>
+        <button id="dislikebtn" class="action-btn">👎 dislike <span id="dislikecount">0</span></button>
+        <button id="commentbtn" class="action-btn">💬 comment</button>
+        </div>
+        <div  class="comment-section hide">
+            <input type="text" id="commentInput" placeholder="write your comment here"/>
+            <div id="buttons">
+                <button class="commentbuttons" id="submitcomment">send</button>
+               
+            </div>
+            <div id="commentList">
+
+            </div>
+        </div>
+       
+       
+
+    </div>
+    <div class="related-video">
+        <video controls loop muted src="video1.mp4"  height="100" width="200" poster="poster.jpg"></video>
+        <h4 class="revideo-title">title</h4>
+        <video controls loop muted src="video2.mp4"  height="100" width="200" poster="poster.jpg"></video>
+        <h4 class="revideo-title">title</h4>
+        <video controls loop muted src="video3.mp4"  height="100" width="200" poster="poster.jpg"></video>
+        <h4 class="revideo-title">title</h4>
+        <video controls loop muted src="video4.mp4"  height="100" width="200" poster="poster.jpg"></video>
+        <h4 class="revideo-title">title</h4>
+        <video controls loop muted src="video5.mp4"  height="100" width="200" poster="poster.jpg"></video>
+        <h4 class="revideo-title">title</h4>
+        <video controls loop muted src="video6.mp4"  height="100" width="200" poster="poster.jpg"></video>
+        <h4 class="revideo-title">title</h4>
+        <video controls loop muted src="video7.mp4"  height="100" width="200" poster="poster.jpg"></video>
+        <h4 class="revideo-title">title</h4>
+        <video controls loop muted src="video8.mp4"  height="100" width="200" poster="poster.jpg"></video>
+        <h4 class="revideo-title">title</h4>
+        
+    </div>
+    </div> 
+</div>
+</body>
+<script>
+    let likebtn=document.getElementById("likebtn");
+    let likecount=document.getElementById("likecount");
+    let dislikebtn=document.getElementById("dislikebtn");
+    let dislikecount=document.getElementById("dislikecount");
+    // read values
+    let likecountvalue=parseInt(localStorage.getItem("likecount"))||0;
+    let liked = localStorage.getItem("liked")==="true";
+    let dislikecountvalue=parseInt(localStorage.getItem("dislikecount"))||0;
+    let disliked= localStorage.getItem("disliked")==="true";
+    // show values when open page
+    likecount.textContent=likecountvalue;
+    dislikecount.textContent=dislikecountvalue;
+    if(liked)
+    {
+        likebtn.style.background="#9d4eeb";
+    }
+    if(disliked)
+    {
+        dislikebtn.style.background="#9d4eeb";
+    }
+    //like button
+    likebtn.addEventListener("click",function(){
+    if(!liked)
+    {
+      likecountvalue++;
+      likebtn.style.background="#9d4eeb";
+      liked=true;  
+      if(disliked && dislikecountvalue>0)
+        {
+            dislikecountvalue--;
+            disliked=false;
+            dislikebtn.style.background="#222"
+        }
+    }
+    else
+    {
+        
+      likecountvalue--;
+      likebtn.style.background="#222";
+      liked=false;  
+              
+    }
+    likecount.textContent=likecountvalue;
+    dislikecount.textContent=dislikecountvalue;
+    localStorage.setItem("likecount",likecountvalue);
+    localStorage.setItem("liked", liked);
+    localStorage.setItem("dislikecount",dislikecountvalue);
+    localStorage.setItem("disliked",disliked);
+    })
+    //dislike button
+    dislikebtn.addEventListener("click",function(){
+        if(!disliked)
+        {
+            dislikecountvalue++;
+            dislikebtn.style.background="#9d4eeb";
+            disliked=true;
+            if(liked && likecountvalue>0)
+            {
+              likecountvalue--;
+              liked=false;
+              likebtn.style.background="#222";
+            }                
+        }
+        else
+        {
+          if(dislikecountvalue>0)
+          dislikecountvalue--;
+          dislikebtn.style.background="#222";
+          disliked=false
+        }
+        dislikecount.textContent=dislikecountvalue;
+        likecount.textContent=likecountvalue;
+        localStorage.setItem("likecount",likecountvalue);
+        localStorage.setItem("liked",liked);
+        localStorage.setItem("dislikecount",dislikecountvalue);
+        localStorage.setItem("disliked",disliked);
+    })
+    //views
+        function formatNumber(num){
+            const sign= num<0?"-":"";
+            const abs= Math.abs(num);
+            if(abs>=1000000)
+            {
+                return sign+(abs/1000000).toFixed(1).replace(/\.0$/,"")+"M";
+            }
+            else if(abs>=1000)
+            {
+                return sign+(abs/1000).toFixed(1).replace(/\.0$/,"")+"K";
+            }
+            else 
+            {
+               return sign + String(abs);
+            }
+              
+        }
+        let viewscount=document.getElementById("viewscount");
+        let viewscountvalue=parseInt(localStorage.getItem("viewscount"))||0;
+        let hasViewed=localStorage.getItem("hasViewed")==="true";
+        if(!hasViewed)
+            {
+            viewscountvalue++;
+            localStorage.setItem("viewscount",viewscountvalue);
+            localStorage.setItem("hasViewed", true);
+            }
+        viewscount.textContent=formatNumber(viewscountvalue);
+        //time video
+        function timeVideo(seconds){
+        if(seconds>=86400)
+        {
+            const days=Math.floor(seconds/86400);
+            return days+(days===1?"day":"days");
+        }
+        else if(seconds>=3600)
+        {
+            const hours=Math.floor(seconds/3600);
+            return hours+(hours===1?"hour":"hours");
+        }
+        else if(seconds>=60)
+        {
+            const minutes=Math.floor(seconds/60);
+            return minutes+(minutes===1?"minute":"minutes");
+        }
+        else{
+           return seconds +(seconds===1?"second":"seconds");
+           }
+        }
+        let timecount=document.getElementById("timecount");
+        let uploadtime= Number(localStorage.getItem("uploadtime"))||Date.now();
+        localStorage.setItem("uploadtime",uploadtime);
+        
+        /*
+        //تنفذ كل فتره زمنيه متكرره setInterval
+        setInterval(()=>{
+            const now=Data.now();
+            const diffSeconds=Math.floor((now- uploadtime)/1000);
+            timecount.textContent(diffSeconds)+ "ago";
+        },1000)*/
+        //update time
+        function updateTime()
+        {
+            const now= Date.now();
+            const diffSeconds=Math.floor((now- uploadtime)/1000);
+            timecount.textContent=timeVideo(diffSeconds)+ "ago";
+            let nextUpdate=1000;
+            if(diffSeconds>=3600)
+            {
+                nextUpdate=60*1000;
+            }
+            if(diffSeconds>=86400)
+            {
+                nextUpdate=60*60*1000;
+            }
+            //setTimeout تنفذ مره واحده بس بعد الوقت المحدد 
+            setTimeout(updateTime,nextUpdate);
+        }
+        updateTime();
+        //comment
+        let commentbtn=document.getElementById("commentbtn");
+        let commentsection=document.querySelector(".comment-section");
+        let commentInput=document.getElementById("commentInput");
+        let send=document.getElementById("submitcomment");
+        let commentList=document.getElementById("commentList");
+        
+        commentbtn.addEventListener("click",function(){
+            commentsection.classList.toggle("hide");
+        })
+        let comments= JSON.parse(localStorage.getItem("comments"))||[];
+        // function to show coments
+        function showComents()
+        {
+            commentList.innerHTML="";
+            comments.forEach((text, index)=>{
+                let commentItem=document.createElement("div");
+                commentItem.className="commentItem";
+                commentItem.style.marginTop="10px";
+                commentItem.style.padding="8px";
+                commentItem.style.background="#222";
+                commentItem.style.borderRadius="5px";
+                let commentText=document.createElement("span");
+                commentText.textContent=text;
+                let editBtn=document.createElement("button");
+                editBtn.textContent="edit";
+                editBtn.className="commentbuttons";
+                editBtn.style.marginLeft="10px";
+                editBtn.addEventListener("click",function(){
+                    let newText=prompt("Edit your comment",text);
+                    if(newText!==null && newText.trim()!=="")
+                    {
+                        comments[index]=newText.trim();
+                        localStorage.setItem("comments",JSON.stringify(comments));
+                        showComents();
+                    }
+                    
+                })
+                let delBtn=document.createElement("button");
+                delBtn.textContent="delete";
+                delBtn.className="commentbuttons";
+                delBtn.style.marginLeft="5px";
+                delBtn.addEventListener("click",function(){
+                    comments.splice(index,1);
+                    localStorage.setItem("comments",JSON.stringify(comments));
+                    showComents();
+                })
+                let reportBtn=document.createElement("button");
+                reportBtn.textContent="report";
+                reportBtn.style.marginLeft="5px";
+                reportBtn.addEventListener("click",function(){
+                    alert("your report has been submitted");
+                    localStorage.setItem("comments",JSON.stringify(comments));
+                    showComents();
+                })
+                commentItem.appendChild(commentText)
+                commentItem.appendChild(editBtn);
+                commentItem.appendChild(delBtn);
+                commentItem.appendChild(reportBtn);
+                
+                commentList.appendChild(commentItem);
+            })
+        }
+        showComents();
+        //add new comment
+        send.addEventListener("click",function(){
+            let text=commentInput.value.trim();
+            if(text==="")
+               return;
+               comments.push(text);
+               localStorage.setItem("comments",JSON.stringify(comments));
+               showComents();
+               commentInput.value="";
+            
+        })
+        // share button
+        let sharebtn=document.getElementById("sharebtn");
+        sharebtn.addEventListener("click", function (){
+            // if browser supports web share API
+            if(navigator.share)
+            {
+                navigator.share({
+                    title:"my website",
+                    text:"check out this content",
+                    url:window.location.href,
+                })
+                .then(()=>alert("successfully shared"))
+                .catch((error)=>alert("Error sharing" + error));
+                return;
+            }
+            //fallback: if browser supports clipboard API
+             if(navigator.clipboard && navigator.clipboard.writeText)
+            {
+                navigator.clipboard.writeText(window.location.href)
+                .then(()=>alert("Link copied! Paste it into the desired application."))
+                .catch(()=>alert("We could not copy the link automatically.Copy it manually:\n" +window.location.href));
+                return;
+            }
+                alert("sharing is not supported in your browser.Copy it manually: \n"+ window.location.href);
+        })
+        
+</script>
+</html>
+
+
+
+
+
+
+
+
